@@ -1,3 +1,4 @@
+<%@page import="com.qsp.DTO.studentDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
 </head>
 <body>
 <div>
-    <form action="">
+    <form action="adminsignup" method="get">
     <table>
          <tr>
               <td> <label>id:</label></td>
@@ -38,13 +39,13 @@
          </tr>       
          
          <tr>
-              <td> <label>password:</label></td>
-               <td><input type="password" name="password"></td>
+              <td> <label for="pass">password:</label></td>
+               <td><input type="password" name="password" id="pass"></td>
          </tr>
          
          <tr>
-               <td><label>Re enter password:</label></td>
-               <td><input type="number" name="repass"></td>
+               <td><label for="repass">Re enter password:</label></td>
+               <td><input type="password" name="repass" id="repass" onmouseout="change()"></td>
          </tr>
       </table>
          
@@ -53,6 +54,28 @@
     </form>
 
 </div>
+<script type="text/javascript">
+    
+    
+    function change(){
+    	var pass=document.getElementById("pass").value;
+        var repass=document.getElementById("repass").value;
+         if(pass!=repass){
+        	  var repass=document.getElementById("repass")
+               alert("pass and repass different");
+               repass.style.border="2px solid red";
+         }
+         else{
+       	    ss var repass=document.getElementById("repass")
+        	 repass.style.border="2px solid green";
+         }
+          
+    
+    }
+    
+
+</script>
+   
 
 </body>
 </html>

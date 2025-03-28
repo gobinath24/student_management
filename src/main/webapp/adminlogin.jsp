@@ -1,3 +1,4 @@
+<%@page import="com.qsp.DTO.studentDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,11 +23,9 @@
        
        <a href="adminsignup.jsp">signup</a>
    
-   </form>
-   
-   
-   
+   </form> 
 </div>
+
 
 </body>
 </html>

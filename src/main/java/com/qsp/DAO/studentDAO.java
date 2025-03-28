@@ -67,14 +67,15 @@ public class studentDAO {
 		}
 		return li;	
 	}
-	public static int savadmin(int id,String name,Long contact,String email,String password) throws ClassNotFoundException, SQLException {
+	public static int savadmin(int id,String name,Long contact,String email,String password,String repass) throws ClassNotFoundException, SQLException {
 		Connection con=getConnection();
-		PreparedStatement ps=con.prepareStatement("insert into admin values(?,?,?,?)");
+		PreparedStatement ps=con.prepareStatement("insert into admin values(?,?,?,?,?,?)");
 		ps.setInt(1, id);
 		ps.setString(2,name);
 		ps.setLong(3, contact);
 		ps.setString(4, email);
 		ps.setString(5, password);
+		ps.setString(6, repass);
 		int v=ps.executeUpdate();
 		return v;
 		
@@ -82,6 +83,8 @@ public class studentDAO {
 	public static boolean findadmin(String email,String password) throws ClassNotFoundException, SQLException {
 		Connection con=getConnection();
 		PreparedStatement ps=con.prepareStatement("select * from admin where email=? and password=?");
+		ps.setString(1, email);
+		ps.setString(2, password);
 		ResultSet rs=ps.executeQuery();
 		if(rs.next()) {
 			return true;
