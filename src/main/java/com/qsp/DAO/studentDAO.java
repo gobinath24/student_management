@@ -17,7 +17,8 @@ import javax.servlet.ServletResponse;
 
 import com.qsp.DTO.studentDTO;
 
-public class studentDAO {
+public class studentDAO 
+{
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
 	    Class.forName("com.mysql.cj.jdbc.Driver");
@@ -55,11 +56,11 @@ public class studentDAO {
 		int v=ps.executeUpdate();
 		return v;	
 	}
-	public static List<studentDTO> findallstudent() throws ClassNotFoundException, SQLException {
+	public static ArrayList<studentDTO> findallstudent() throws ClassNotFoundException, SQLException {
 		Connection con=getConnection();
 		Statement st=con.createStatement();
 		ResultSet rs=st.executeQuery("select * from student");
-		List<studentDTO> li=new ArrayList<studentDTO>();
+		ArrayList<studentDTO> li=new ArrayList<studentDTO>();
 		
 		while(rs.next()) {
 			studentDTO s=new studentDTO(rs.getInt(1),rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
@@ -67,7 +68,7 @@ public class studentDAO {
 		}
 		return li;	
 	}
-	public static int savadmin(int id,String name,Long contact,String email,String password,String repass) throws ClassNotFoundException, SQLException {
+	public static int saveadmin(int id,String name,Long contact,String email,String password,String repass) throws ClassNotFoundException, SQLException {
 		Connection con=getConnection();
 		PreparedStatement ps=con.prepareStatement("insert into admin values(?,?,?,?,?,?)");
 		ps.setInt(1, id);
@@ -80,7 +81,8 @@ public class studentDAO {
 		return v;
 		
 	}
-	public static boolean findadmin(String email,String password) throws ClassNotFoundException, SQLException {
+	public static boolean findadmin(String email,String password) throws ClassNotFoundException, SQLException 
+	{
 		Connection con=getConnection();
 		PreparedStatement ps=con.prepareStatement("select * from admin where email=? and password=?");
 		ps.setString(1, email);
@@ -94,6 +96,22 @@ public class studentDAO {
 		}
 		
 	}
+	public static int update(int id,String name,int physics,int chemistry,int maths) throws ClassNotFoundException, SQLException {
+		Connection con=getConnection();
+		PreparedStatement ps=con.prepareStatement("update student set name=?,physics=?,chemistry=?,maths=? where id=?");
+		
+		ps.setString(1, name);
+		ps.setInt(2, physics);
+		ps.setInt(3, chemistry);
+		ps.setInt(4, maths);
+		ps.setInt(5, id);
+		
+		int v=ps.executeUpdate();
+		return v;
+		
+	}
+
+	
 
 	
 

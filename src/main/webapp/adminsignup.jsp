@@ -5,77 +5,58 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-    div{
-       border: 1px solid black;
-       width:370px;
-       height:240px; 
-    }
-</style>
+<title>Admin Signup</title>
+
 </head>
 <body>
-<div>
+
+<div class="container">
+    <h2>Admin Signup</h2>
     <form action="adminsignup" method="get">
-    <table>
-         <tr>
-              <td> <label>id:</label></td>
-              <td> <input type="number" name="id"></td>
-         </tr>
-         
-         <tr>
-              <td> <label>name:</label></td>
-               <td><input type="text" name="name"></td>
-         </tr>
-         
-         <tr>
-              <td> <label>contact:</label></td>
-              <td> <input type="number" name="contact"></td>
-         </tr>
-         
-         <tr>
-               <td> <label>Email:</label></td>
-                <td><input type="email" name="email"></td>
-         </tr>       
-         
-         <tr>
-              <td> <label for="pass">password:</label></td>
-               <td><input type="password" name="password" id="pass"></td>
-         </tr>
-         
-         <tr>
-               <td><label for="repass">Re enter password:</label></td>
-               <td><input type="password" name="repass" id="repass" onmouseout="change()"></td>
-         </tr>
-      </table>
-         
-         <button>signup</button>
-    
+        <table>
+            <tr>
+                <td><label>ID:</label></td>
+                <td><div class="input-box"><input type="number" name="id" required><label>ID</label></div></td>
+            </tr>
+            <tr>
+                <td><label>Name:</label></td>
+                <td><div class="input-box"><input type="text" name="name" required><label>Name</label></div></td>
+            </tr>
+            <tr>
+                <td><label>Contact:</label></td>
+                <td><div class="input-box"><input type="number" name="contact" required><label>Contact</label></div></td>
+            </tr>
+            <tr>
+                <td><label>Email:</label></td>
+                <td><div class="input-box"><input type="email" name="email" required><label>Email</label></div></td>
+            </tr>
+            <tr>
+                <td><label>Password:</label></td>
+                <td><div class="input-box"><input type="password" name="password" id="pass" required><label>Password</label></div></td>
+            </tr>
+            <tr>
+                <td><label>Re-enter Password:</label></td>
+                <td><div class="input-box"><input type="password" name="repass" id="repass" required onkeyup="validatePassword()"><label>Re-enter Password</label></div></td>
+            </tr>
+        </table>
+        <button>Signup</button>
     </form>
-
 </div>
-<script type="text/javascript">
-    
-    
-    function change(){
-    	var pass=document.getElementById("pass").value;
-        var repass=document.getElementById("repass").value;
-         if(pass!=repass){
-        	  var repass=document.getElementById("repass")
-               alert("pass and repass different");
-               repass.style.border="2px solid red";
-         }
-         else{
-       	    ss var repass=document.getElementById("repass")
-        	 repass.style.border="2px solid green";
-         }
-          
-    
-    }
-    
 
+<script>
+    function validatePassword() {
+        var pass = document.getElementById("pass").value;
+        var repass = document.getElementById("repass");
+        
+        if (pass !== repass.value) {
+            repass.classList.add("error");
+            repass.style.border="3px solid red";
+        } else {
+            repass.classList.remove("error");
+            repass.style.border="3px solid green";
+        }
+    }
 </script>
-   
 
 </body>
 </html>
